@@ -1,0 +1,78 @@
+---
+import Icon from './Icon.astro';
+
+export interface Props {
+	class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<header class={className}>
+	<div class="container">
+		
+		<nav class="nav">
+			<a href="/">Home</a>
+			<a href="/">Contact</a>
+			<a href="/">Projects</a>
+		</nav>
+
+		<button class="menu-toggle" aria-label="Toggle menu">
+			<Icon name="menu" />
+		</button>
+	</div>
+</header>
+
+<style>
+	.container {
+		max-width: var(--max-width);
+		margin-inline: auto;
+		padding: var(--space-md);
+		padding-block-start: var(--space-xl);
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	.logo {
+		text-decoration: none;
+		color: var(--color-text);
+		font-weight: 700;
+	}
+
+	.nav {
+		display: flex;
+		gap: var(--space-lg);
+		inline-size: 100%;
+		
+		justify-content: center;
+	}
+
+	.nav a {
+		text-decoration: none;
+		color: var(--color-text);
+		transition: color var(--transition);
+	}
+
+	.nav a:hover {
+		color: var(--color-text);
+	}
+
+	.menu-toggle {
+		display: none;
+		background: none;
+		border: none;
+		cursor: pointer;
+		padding: var(--space-sm);
+	}
+
+	@media (max-width: 768px) {
+		.nav {
+			display: none;
+		}
+
+		.menu-toggle {
+			display: block;
+		}
+	}
+</style>

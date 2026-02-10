@@ -1,0 +1,66 @@
+---
+import Icon from "./Icon.astro";
+
+export interface Props {
+    className?: string;
+    href?: string;
+    icon?: string;
+    target?: "_self" | "_blank" | "_parent" | "_top";
+    rel?: string;
+}
+
+const { className, href = "#", icon, target, rel, ...props } = Astro.props;
+const resolvedRel = rel ?? (target === "_blank" ? "noopener noreferrer" : undefined);
+---
+
+<a href={href} target={target} rel={resolvedRel} class:list={[className]} {...props}>
+    {icon && (
+        <Icon name={icon}>
+            <span class="icon-fallback">{icon}</span>
+        </Icon>
+    )}
+    <slot />
+</a>
+
+<style>
+    svg {
+        transition: inherit;
+    }
+
+    .icon-fallback {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 var(--space-xs);
+        border: 1px dashed currentColor;
+        border-radius: var(--border-radius);
+        font-size: var(--font-size-sm);
+        line-height: 1.1;
+        text-transform: uppercase;
+    }
+
+    a {
+        cursor: pointer;
+        user-select: none;
+        text-decoration: none;
+        touch-action: manipulation;
+        display: inline-flex;
+        align-items: center;
+        gap: var(--space-sm);
+        position: relative;
+        transition: var(--transition);
+		color: inherit;
+    }
+
+    a:hover {
+        color: var(--color-secondary);
+    }
+
+    a:hover svg {
+        color: var(--color-secondary);
+    }
+
+    a:focus {
+        outline: 0;
+    }
+</style>

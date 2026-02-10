@@ -1,0 +1,72 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Button from "../components/Button.astro";
+import { Image } from "astro:assets";
+
+import ProfileImage from "../assets/profile.jpg";
+---
+
+<Layout>
+	<main>
+		<section class="content">
+			<Image
+				src={ProfileImage}
+				alt="Profile picture"
+				width={250}
+				height={250}
+				class="profile-pic"
+			/>
+
+			<h1>Radu Andrei Gorcea</h1>
+			<span>Front-end developer</span>
+
+			<p>
+				A Full Stack Front-end Developer based in Romania. Meticulous
+				web developer with over 2 <br /> years of front end experience and
+				passion for responsive and mobile-first website design.
+			</p>
+
+			<div class="contact">
+				<Button href="https://github.com/raduandreigorcea" icon="github" target="_blank" />
+				<Button href="https://www.linkedin.com/in/radu-andrei-gorcea/" icon="linkedin" target="_blank" />
+			</div>
+		</section>
+	</main>
+</Layout>
+
+<style>
+	.content {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: var(--space-lg);
+	}
+
+	.profile-pic {
+		border-radius: 50%;
+		height: 250px;
+		width: 250px;
+		object-fit: contain;
+		background-color: aliceblue;
+	}
+
+	h1 {
+		color: #fff;
+		font-size: calc(2.25 * var(--space-lg));
+		margin: 0;
+	}
+
+	span {
+		color: var(--color-secondary);
+		font-size: var(--font-size-lg);
+	}
+
+	p {
+		text-align: center;
+	}
+
+	.contact {
+		display: flex;
+		gap: var(--space-md);
+	}
+</style>
