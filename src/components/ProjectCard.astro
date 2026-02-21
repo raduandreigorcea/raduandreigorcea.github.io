@@ -1,0 +1,181 @@
+---
+import Button from "./Button.astro";
+
+export interface Props {
+    title: string;
+    description: string;
+    tags?: string[];
+    href?: string;
+    repo?: string;
+    image?: ImageMetadata;
+}
+
+const { title, description, tags = [], href, repo } = Astro.props;
+---
+
+<article class="card">
+    <div class="card-content">
+        <h3 class="card-title">{title}</h3>
+        <p class="card-description">{description}</p>
+
+        {
+            tags.length > 0 && (
+                <ul class="card-tags">
+                    {tags.map((tag) => (
+                        <li class="tag">{tag}</li>
+                    ))}
+                </ul>
+            )
+        }
+
+        <div class="card-links">
+            {
+                href && (
+                    <Button
+                        href={href}
+                        icon="external"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="card-link"
+                    >
+                        Live Demo
+                    </Button>
+                )
+            }
+            {
+                repo && (
+                    <Button
+                        href={repo}
+                        icon="code"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="card-link"
+                    >
+                        Source
+                    </Button>
+                )
+            }
+        </div>
+    </div>
+</article>
+
+<style>
+    .card {
+        border: 1px solid var(--color-border);
+        border-radius: var(--border-radius-lg);
+        padding: clamp(var(--space-lg), 4vw, var(--space-xl));
+        background-color: var(--color-surface);
+        transition: var(--transition-slow);
+        position: relative;
+    }
+
+    .card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        opacity: 0;
+        transition: opacity var(--transition-slow);
+        background: linear-gradient(
+            135deg,
+            rgba(85, 181, 207, 0.04),
+            transparent 60%
+        );
+        pointer-events: none;
+    }
+
+    .card:hover {
+        border-color: var(--color-border-hover);
+        background-color: var(--color-surface-hover);
+        box-shadow: var(--shadow-md);
+        transform: translateY(-2px);
+    }
+
+    .card:hover::before {
+        opacity: 1;
+    }
+
+    .card-content {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-sm);
+        position: relative;
+    }
+
+    .card-title {
+        color: var(--color-primary);
+        font-size: var(--font-size-xl);
+        font-weight: var(--font-weight-semibold);
+        letter-spacing: var(--letter-spacing-tight);
+        margin: 0;
+    }
+
+    .card-description {
+        color: var(--color-text);
+        font-size: var(--font-size-sm);
+        margin: 0;
+        line-height: var(--line-height-relaxed);
+    }
+
+    .card-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--space-sm);
+        list-style: none;
+        padding: 0;
+        margin: var(--space-sm) 0 0;
+    }
+
+    .tag {
+        font-size: var(--font-size-xs);
+        font-weight: var(--font-weight-medium);
+        color: var(--color-secondary);
+        background-color: var(--color-secondary-soft);
+        padding: var(--space-2px) var(--space-sm);
+        border-radius: var(--border-radius-sm);
+        letter-spacing: var(--letter-spacing-wide);
+    }
+
+    .card-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--space-sm);
+        margin-top: var(--space-md);
+    }
+
+    .card-link {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--space-sm);
+        color: var(--color-text-muted);
+        text-decoration: none;
+        font-size: var(--font-size-sm);
+        font-weight: var(--font-weight-medium);
+        padding: var(--space-sm) var(--space-md);
+        border: 1px solid var(--color-border);
+        border-radius: var(--border-radius);
+        transition: var(--transition);
+        white-space: nowrap;
+    }
+
+    .card-link:hover {
+        color: var(--color-primary);
+        border-color: var(--color-border-hover);
+        background-color: var(--color-surface-hover);
+    }
+
+    @media (max-width: 480px) {
+        .card-title {
+            font-size: var(--font-size-lg);
+        }
+
+        .card-tags {
+            gap: var(--space-xs);
+        }
+
+        .card-link {
+            font-size: var(--font-size-xs);
+            padding: var(--space-xs) var(--space-sm);
+        }
+    }
+</style>

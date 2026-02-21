@@ -1,72 +1,182 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Button from "../components/Button.astro";
+import ProjectCard from "../components/ProjectCard.astro";
 import { Image } from "astro:assets";
 
 import ProfileImage from "../assets/profile.jpg";
+
+import { site, projects } from "../../config";
 ---
 
 <Layout>
-	<main>
-		<section class="content">
-			<Image
-				src={ProfileImage}
-				alt="Profile picture"
-				width={250}
-				height={250}
-				class="profile-pic"
+	<section class="hero">
+		<Image
+			src={ProfileImage}
+			alt="Profile picture"
+			width={240}
+			height={240}
+			class="profile-pic"
+		/>
+
+		<div class="hero-text">
+			<h1>{site.name}</h1>
+			<span class="label">{site.label}</span>
+			<p class="bio">{site.desc}</p>
+		</div>
+
+		<div class="social" id="contact">
+			<Button
+				href="https://github.com/raduandreigorcea"
+				icon="github"
+				target="_blank"
+				className="social-link"
+			/>
+			<Button
+				href="https://www.linkedin.com/in/radu-andrei-gorcea/"
+				icon="linkedin"
+				target="_blank"
+				className="social-link"
 			/>
 
-			<h1>Radu Andrei Gorcea</h1>
-			<span>Front-end developer</span>
+			<Button	className="social-link">radu.andrei787@gmail.com</Button>
+			<Button className="social-link">0757 967 797</Button>
+		</div>
+	</section>
 
-			<p>
-				A Full Stack Front-end Developer based in Romania. Meticulous
-				web developer with over 2 <br /> years of front end experience and
-				passion for responsive and mobile-first website design.
-			</p>
-
-			<div class="contact">
-				<Button href="https://github.com/raduandreigorcea" icon="github" target="_blank" />
-				<Button href="https://www.linkedin.com/in/radu-andrei-gorcea/" icon="linkedin" target="_blank" />
-			</div>
-		</section>
-	</main>
+	<section class="projects" id="projects">
+		<div class="projects-grid">
+			{projects.map((project) => <ProjectCard {...project} />)}
+		</div>
+	</section>
 </Layout>
 
 <style>
-	.content {
+	.hero {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
+		text-align: center;
+		padding-block: var(--space-3xl) var(--space-2xl);
 		gap: var(--space-lg);
 	}
 
 	.profile-pic {
 		border-radius: 50%;
-		height: 250px;
-		width: 250px;
+		height: clamp(140px, 30vw, 240px);
+		width: clamp(140px, 30vw, 240px);
 		object-fit: contain;
+		border: 3px solid var(--color-border-hover);
 		background-color: aliceblue;
+		box-shadow: var(--shadow-lg), var(--shadow-glow);
+	}
+
+	.hero-text {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: var(--space-sm);
 	}
 
 	h1 {
-		color: #fff;
-		font-size: calc(2.25 * var(--space-lg));
+		color: var(--color-primary);
+		font-size: clamp(var(--font-size-2xl), 5vw, var(--font-size-3xl));
+		font-weight: var(--font-weight-bold);
+		letter-spacing: var(--letter-spacing-tight);
+		line-height: var(--line-height-tight);
 		margin: 0;
+		word-break: break-word;
 	}
 
-	span {
+	.label {
 		color: var(--color-secondary);
 		font-size: var(--font-size-lg);
+		font-weight: var(--font-weight-medium);
 	}
 
-	p {
-		text-align: center;
+	.bio {
+		max-width: min(520px, 100%);
+		color: var(--color-text);
+		line-height: var(--line-height-relaxed);
+		margin: var(--space-sm) 0 0;
+		padding-inline: var(--space-sm);
 	}
 
-	.contact {
+	.social {
 		display: flex;
 		gap: var(--space-md);
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+
+	.social-link {
+		padding: var(--space-sm);
+		border: 1px solid var(--color-border);
+		border-radius: var(--border-radius);
+		color: var(--color-text-muted);
+		transition: var(--transition);
+	}
+
+	.social-link:hover {
+		color: var(--color-primary);
+		border-color: var(--color-border-hover);
+		background-color: var(--color-surface-hover);
+		box-shadow: var(--shadow-sm);
+	}
+
+	.projects {
+		padding-block: var(--space-2xl);
+	}
+
+	h2 {
+		color: var(--color-primary);
+		font-size: clamp(var(--font-size-xl), 4vw, var(--font-size-2xl));
+		font-weight: var(--font-weight-semibold);
+		letter-spacing: var(--letter-spacing-tight);
+		margin: 0 0 var(--space-xs);
+	}
+
+	.projects-grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: var(--space-md);
+	}
+
+	#contact,
+	#projects {
+		scroll-margin-top: 80px;
+	}
+
+	@media (max-width: 768px) {
+		.hero {
+			padding-block: var(--space-2xl) var(--space-xl);
+		}
+
+		.projects {
+			padding-block: var(--space-xl);
+		}
+	}
+
+	@media (max-width: 480px) {
+		.hero {
+			padding-block: var(--space-xl) var(--space-lg);
+			gap: var(--space-md);
+		}
+
+		.label {
+			font-size: var(--font-size-base);
+		}
+
+		.bio {
+			font-size: var(--font-size-sm);
+		}
+
+		.section-header {
+			margin-bottom: var(--space-lg);
+		}
+
+		.social {
+			gap: var(--space-xs);
+		}
 	}
 </style>

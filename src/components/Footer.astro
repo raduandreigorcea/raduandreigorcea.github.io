@@ -9,19 +9,38 @@ const currentYear = new Date().getFullYear();
 ---
 
 <footer class={className}>
-	<p>&copy; {currentYear} {siteName}. All rights reserved.</p>
+	<div class="footer-inner">
+		<div class="divider"></div>
+		<p>&copy; {currentYear} {siteName}</p>
+	</div>
 </footer>
 
 <style>
 	footer {
-		background-color: var(--color-background);
-		padding-bottom: 1em;
+		padding: var(--space-xl) var(--space-md);
+	}
+
+	.footer-inner {
+		max-width: var(--max-width);
+		margin-inline: auto;
+	}
+
+	.divider {
+		height: 1px;
+		background: linear-gradient(
+			to right,
+			transparent,
+			var(--color-border-hover),
+			transparent
+		);
+		margin-bottom: var(--space-xl);
 	}
 
 	p {
 		margin: 0;
-		color: var(--color-text);
-		font-size: var(--font-size-sm);
+		color: var(--color-text-muted);
+		font-size: var(--font-size-xs);
 		text-align: center;
+		letter-spacing: var(--letter-spacing-wide);
 	}
 </style>

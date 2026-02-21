@@ -1,40 +1,73 @@
 :root {
 	/* Colors */
-	--color-primary: #000;
+	--color-primary: #ffffff;
 	--color-secondary: #55b5cf;
-	--color-background: #17212b;
-	--color-text: #ceced0;
-	--color-border: #e5e5e5;
+	--color-secondary-soft: rgba(85, 181, 207, 0.1);
+	--color-secondary-medium: rgba(85, 181, 207, 0.15);
+	--color-background: #0f1923;
+	--color-surface: rgba(255, 255, 255, 0.03);
+	--color-surface-hover: rgba(255, 255, 255, 0.06);
+	--color-text: #b0b8c1;
+	--color-text-muted: #6b7a8d;
+	--color-border: rgba(255, 255, 255, 0.06);
+	--color-border-hover: rgba(255, 255, 255, 0.12);
 
 	/* Spacing */
 	--space-2px: 2px;
 	--space-xs: 0.25rem;
 	--space-sm: 0.5rem;
 	--space-md: 1rem;
-	--space-lg: 2rem;
-	--space-xl: 4rem;
+	--space-lg: 1.5rem;
+	--space-xl: 2.5rem;
+	--space-2xl: 4rem;
+	--space-3xl: 6rem;
 
 	/* Typography */
-	--font-family: system-ui, sans-serif;
+	--font-family: "Inter", system-ui, -apple-system, sans-serif;
+	--font-size-xs: 0.75rem;
 	--font-size-sm: 0.875rem;
 	--font-size-base: 1rem;
-	--font-size-lg: 1.25rem;
-	--font-size-xl: 1.5rem;
-	--font-size-2xl: 2rem;
+	--font-size-lg: 1.125rem;
+	--font-size-xl: 1.375rem;
+	--font-size-2xl: 1.75rem;
+	--font-size-3xl: 2.5rem;
+	--font-size-4xl: 3.25rem;
+	--line-height-tight: 1.2;
+	--line-height-base: 1.6;
+	--line-height-relaxed: 1.8;
+	--font-weight-normal: 400;
+	--font-weight-medium: 500;
+	--font-weight-semibold: 600;
+	--font-weight-bold: 700;
+	--letter-spacing-tight: -0.02em;
+	--letter-spacing-wide: 0.05em;
 
 	/* Layout */
-	--max-width: 1200px;
-	--border-radius: 0.25rem;
+	--max-width: 720px;
+	--border-radius-sm: 0.375rem;
+	--border-radius: 0.5rem;
+	--border-radius-lg: 0.75rem;
+	--border-radius-xl: 1rem;
+
+	/* Shadows */
+	--shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.15);
+	--shadow-md: 0 4px 12px rgba(0, 0, 0, 0.2);
+	--shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.3);
+	--shadow-glow: 0 0 20px rgba(85, 181, 207, 0.15);
 
 	/* Transitions */
 	--transition: 0.2s ease;
+	--transition-slow: 0.3s ease;
 }
 
-body {
-	font-family: var(--font-family);
-	font-size: var(--font-size-base);
-	color: var(--color-text);
-	background-color: var(--color-background);
-	margin: 0;
-	min-block-size: 100vh;
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+img,
+svg {
+	max-width: 100%;
+	height: auto;
 }
