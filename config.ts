@@ -37,7 +37,6 @@ export const projects: Project[] = [
     title: "Pixlet",
     description: "A modern, lightweight pixel art editor built with Vue 3, TypeScript, and Tauri. Create pixel art with an intuitive interface, powerful drawing tools, and seamless performance.",
     tags: ["Vue.js", "TypeScript", "Tauri", "Rust"],
-    href: "https://raduandreigorcea.github.io/Pixlet/",
     repo: "https://github.com/raduandreigorcea/Pixlet",
   }
 ];
