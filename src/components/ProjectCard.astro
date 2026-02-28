@@ -15,7 +15,7 @@ const { title, description, tags = [], href, repo } = Astro.props;
 
 <article class="card">
     <div class="card-content">
-        <h3 class="card-title">{title}</h3>
+        <h2 class="card-title">{title}</h2>
         <p class="card-description">{description}</p>
 
         {
@@ -64,7 +64,6 @@ const { title, description, tags = [], href, repo } = Astro.props;
         border: 1px solid var(--color-border);
         border-radius: var(--border-radius-lg);
         padding: clamp(var(--space-lg), 4vw, var(--space-xl));
-        background-color: var(--color-surface);
         transition: var(--transition-slow);
         position: relative;
     }
@@ -74,7 +73,6 @@ const { title, description, tags = [], href, repo } = Astro.props;
         position: absolute;
         inset: 0;
         border-radius: inherit;
-        opacity: 0;
         transition: opacity var(--transition-slow);
         background: linear-gradient(
             135deg,
@@ -86,13 +84,8 @@ const { title, description, tags = [], href, repo } = Astro.props;
 
     .card:hover {
         border-color: var(--color-border-hover);
-        background-color: var(--color-surface-hover);
         box-shadow: var(--shadow-md);
-        transform: translateY(-2px);
-    }
-
-    .card:hover::before {
-        opacity: 1;
+        transform: translateY(-3px);
     }
 
     .card-content {
@@ -161,7 +154,7 @@ const { title, description, tags = [], href, repo } = Astro.props;
     .card-link:hover {
         color: var(--color-primary);
         border-color: var(--color-border-hover);
-        background-color: var(--color-surface-hover);
+        background-color: var(--color-secondary-soft);
     }
 
     @media (max-width: 480px) {

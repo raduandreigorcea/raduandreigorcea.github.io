@@ -1,12 +1,10 @@
 :root {
 	/* Colors */
-	--color-primary: #ffffff;
+	--color-primary: #ffffffe1;
 	--color-secondary: #55b5cf;
 	--color-secondary-soft: rgba(85, 181, 207, 0.1);
 	--color-secondary-medium: rgba(85, 181, 207, 0.15);
 	--color-background: #0f1923;
-	--color-surface: rgba(255, 255, 255, 0.03);
-	--color-surface-hover: rgba(255, 255, 255, 0.06);
 	--color-text: #b0b8c1;
 	--color-text-muted: #6b7a8d;
 	--color-border: rgba(255, 255, 255, 0.06);
@@ -43,7 +41,7 @@
 	--letter-spacing-wide: 0.05em;
 
 	/* Layout */
-	--max-width: 720px;
+	--max-width: 1250px;
 	--border-radius-sm: 0.375rem;
 	--border-radius: 0.5rem;
 	--border-radius-lg: 0.75rem;

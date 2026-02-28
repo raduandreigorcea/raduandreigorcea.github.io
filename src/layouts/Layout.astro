@@ -11,16 +11,50 @@ import { site } from "../../config";
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta name="description" content={site.desc} />
+		<meta name="keywords" content="Radu Andrei Gorcea, Front-end Developer, Web Developer, Portfolio, JavaScript, TypeScript, Astro, Romania, Projects" />
+		<meta name="author" content="Radu Andrei Gorcea" />
+		<link rel="canonical" href="https://raduandreigorcea.github.io/" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 		<meta name="generator" content={Astro.generator} />
-		<title>{site.name}</title>
+		<title>{site.name} | Front-end Developer Portfolio</title>
+
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="https://raduandreigorcea.github.io/" />
+		<meta property="og:title" content="Radu Andrei Gorcea | Front-end Developer Portfolio" />
+		<meta property="og:description" content={site.desc} />
+		<meta property="og:image" content="https://raduandreigorcea.github.io/profile.jpg" />
+
+		<!-- Twitter -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:url" content="https://raduandreigorcea.github.io/" />
+		<meta name="twitter:title" content="Radu Andrei Gorcea | Front-end Developer Portfolio" />
+		<meta name="twitter:description" content={site.desc} />
+		<meta name="twitter:image" content="https://raduandreigorcea.github.io/profile.jpg" />
+
+		<!-- Schema.org Structured Data -->
+		<script type="application/ld+json">
+		{JSON.stringify({
+			'@context': 'https://schema.org',
+			'@type': 'Person',
+			name: 'Radu Andrei Gorcea',
+			url: 'https://raduandreigorcea.github.io/',
+			sameAs: [
+				'https://github.com/raduandreigorcea',
+				'https://www.linkedin.com/in/radu-andrei-gorcea/'
+			],
+			jobTitle: 'Front-end Developer',
+			description: site.desc,
+			image: 'https://raduandreigorcea.github.io/profile.jpg',
+		})}
+		</script>
 	</head>
 	<body>
 		<Header/>
-		<main>
+		<main id="main-content" tabindex="-1">
 			<slot />
 		</main>
 		<Footer siteName={site.name} />
@@ -68,4 +102,5 @@ import { site } from "../../config";
 			padding: var(--space-lg) var(--space-md);
 		}
 	}
+
 </style>

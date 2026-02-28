@@ -1,5 +1,5 @@
 ---
-import Icon from './Icon.astro';
+import Icon from "./Icon.astro";
 
 export interface Props {
 	class?: string;
@@ -10,16 +10,67 @@ const { class: className } = Astro.props;
 
 <header class={className}>
 	<div class="container">
-		<nav class="nav">
-			<a href="#" class="nav-link">Home</a>
-			<a href="#contact" class="nav-link">Contact</a>
-			<a href="#projects" class="nav-link">Projects</a>
+		<nav class="nav" id="main-nav" aria-label="Main navigation">
+			<a href="#" class="nav-link" aria-current="page">Home</a>
+			<a href="#contact" class="nav-link" aria-label="Contact section"
+				>Contact</a
+			>
+			<a href="#projects" class="nav-link" aria-label="Projects section"
+				>Projects</a
+			>
 		</nav>
 
-		<button class="menu-toggle" aria-label="Toggle menu">
-			<Icon name="menu" size={20} />
+		<button
+			class="menu-toggle"
+			aria-label="Open main menu"
+			id="menu-toggle"
+			aria-haspopup="true"
+			aria-controls="main-nav"
+			aria-expanded="false"
+			tabindex="0"
+		>
+			<span class="hamburger" aria-hidden="true">
+				<span></span>
+				<span></span>
+				<span></span>
+			</span>
 		</button>
 	</div>
+	<script type="text/javascript" is:inline>
+		const menuToggle = document.getElementById("menu-toggle");
+		const nav = document.getElementById("main-nav");
+		const hamburger = menuToggle.querySelector(".hamburger");
+		function checkMenu() {
+			if (window.innerWidth > 640) {
+				nav.classList.add("open");
+				hamburger.classList.remove("active");
+			} else {
+				nav.classList.remove("open");
+				hamburger.classList.remove("active");
+			}
+		}
+		checkMenu();
+		window.addEventListener("resize", checkMenu);
+		menuToggle.addEventListener("click", () => {
+			nav.classList.toggle("open");
+			hamburger.classList.toggle("active");
+			menuToggle.setAttribute(
+				"aria-expanded",
+				nav.classList.contains("open"),
+			);
+		});
+		document.addEventListener("click", (e) => {
+			if (
+				window.innerWidth <= 640 &&
+				!nav.contains(e.target) &&
+				!menuToggle.contains(e.target)
+			) {
+				nav.classList.remove("open");
+				hamburger.classList.remove("active");
+				menuToggle.setAttribute("aria-expanded", "false");
+			}
+		});
+	</script>
 </header>
 
 <style>
@@ -27,9 +78,7 @@ const { class: className } = Astro.props;
 		position: sticky;
 		top: 0;
 		z-index: 100;
-		background-color: rgba(15, 25, 35, 0.85);
-		backdrop-filter: blur(12px);
-		-webkit-backdrop-filter: blur(12px);
+		background-color: var(--color-background);
 		border-bottom: 1px solid var(--color-border);
 	}
 
@@ -46,10 +95,13 @@ const { class: className } = Astro.props;
 		display: flex;
 		gap: var(--space-lg);
 	}
+	.nav.open {
+		display: flex !important;
+	}
 
 	.nav-link {
 		text-decoration: none;
-		color: var(--color-text-muted);
+		color: var(--color-text);
 		font-size: var(--font-size-sm);
 		font-weight: var(--font-weight-medium);
 		letter-spacing: var(--letter-spacing-wide);
@@ -60,7 +112,7 @@ const { class: className } = Astro.props;
 	}
 
 	.nav-link::after {
-		content: '';
+		content: "";
 		position: absolute;
 		bottom: -2px;
 		left: 0;
@@ -85,6 +137,46 @@ const { class: className } = Astro.props;
 		cursor: pointer;
 		padding: var(--space-sm);
 		color: var(--color-text);
+		z-index: 300;
+	}
+
+	.hamburger {
+		display: inline-block;
+		width: 28px;
+		height: 22px;
+		position: relative;
+		transition: 0.3s;
+	}
+	.hamburger span {
+		display: block;
+		position: absolute;
+		height: 2px;
+		width: 100%;
+		background: var(--color-primary);
+		border-radius: 2px;
+		opacity: 1;
+		left: 0;
+		transition: 0.3s cubic-bezier(0.4, 2, 0.6, 1);
+	}
+	.hamburger span:nth-child(1) {
+		top: 0;
+	}
+	.hamburger span:nth-child(2) {
+		top: 9px;
+	}
+	.hamburger span:nth-child(3) {
+		top: 18px;
+	}
+	.hamburger.active span:nth-child(1) {
+		top: 9px;
+		transform: rotate(45deg);
+	}
+	.hamburger.active span:nth-child(2) {
+		opacity: 0;
+	}
+	.hamburger.active span:nth-child(3) {
+		top: 9px;
+		transform: rotate(-45deg);
 	}
 
 	@media (max-width: 640px) {
@@ -94,10 +186,43 @@ const { class: className } = Astro.props;
 
 		.nav {
 			display: none;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			position: absolute;
+			top: 100%;
+			left: 0;
+			width: 100%;
+			background: var(--color-background);
+			box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+			z-index: 200;
+			padding: var(--space-md) 0;
+			animation: slideDown 0.3s cubic-bezier(0.4, 2, 0.6, 1) both;
+			transition:
+				opacity 0.3s cubic-bezier(0.4, 2, 0.6, 1),
+				transform 0.3s cubic-bezier(0.4, 2, 0.6, 1);
+			opacity: 0;
+			pointer-events: none;
 		}
-
+		.nav.open {
+			display: flex !important;
+			animation: slideDown 0.3s cubic-bezier(0.4, 2, 0.6, 1) both;
+			opacity: 1;
+			pointer-events: auto;
+		}
 		.menu-toggle {
 			display: block;
+		}
+	}
+
+	@keyframes slideDown {
+		0% {
+			opacity: 0;
+			transform: translateY(-6px);
+		}
+		100% {
+			opacity: 1;
+			transform: translateY(0);
 		}
 	}
 </style>

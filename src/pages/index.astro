@@ -26,10 +26,32 @@ import { site, projects } from "../../config";
 		</div>
 
 		<div class="social" id="contact">
-			<Button href="https://github.com/raduandreigorcea" icon="github" target="_blank" className="social-link">/raduandreigorcea</Button>
-			<Button href="https://www.linkedin.com/in/radu-andrei-gorcea/" icon="linkedin" target="_blank" className="social-link">/radu-andrei-gorcea</Button>
-			<Button href="mailto:radu.andrei787@gmail.com" icon="mail" className="social-link">radu.andrei787@gmail.com</Button>
-			<Button href="tel:+40757967797" icon="phone" className="social-link">(+40) 0757 967 797</Button>
+			<Button
+				href="https://github.com/raduandreigorcea"
+				icon="github"
+				target="_blank"
+				className="social-link"
+				aria-label="GitHub profile">/raduandreigorcea</Button
+			>
+			<Button
+				href="https://www.linkedin.com/in/radu-andrei-gorcea/"
+				icon="linkedin"
+				target="_blank"
+				className="social-link"
+				aria-label="LinkedIn profile">/raduandreigorcea</Button
+			>
+			<Button
+				href="mailto:radu.andrei787@gmail.com"
+				icon="mail"
+				className="social-link"
+				aria-label="Send email">radu.andrei787@gmail.com</Button
+			>
+			<Button
+				href="tel:+40757967797"
+				icon="phone"
+				className="social-link"
+				aria-label="Call phone number">+40 757 967 797</Button
+			>
 		</div>
 	</section>
 
@@ -46,17 +68,16 @@ import { site, projects } from "../../config";
 		flex-direction: column;
 		align-items: center;
 		text-align: center;
-		padding-block: var(--space-3xl) var(--space-2xl);
 		gap: var(--space-lg);
 	}
 
 	.profile-pic {
 		border-radius: 50%;
-		height: clamp(140px, 30vw, 240px);
-		width: clamp(140px, 30vw, 240px);
+		height: clamp(100px, 40vw, 240px);
+		width: clamp(100px, 40vw, 240px);
 		object-fit: contain;
 		border: 3px solid var(--color-border-hover);
-		background-color: aliceblue;
+		background-color: var(--color-primary);
 		box-shadow: var(--shadow-lg), var(--shadow-glow);
 	}
 
@@ -102,12 +123,13 @@ import { site, projects } from "../../config";
 		padding: var(--space-sm);
 		border: 1px solid var(--color-border);
 		border-radius: var(--border-radius);
-		color: var(--color-text-muted);
+		color: #var(--color-text);
+		background: var(--color-background);
 		transition: var(--transition);
 	}
 
 	.social-link:hover {
-		color: var(--color-primary);
+		color: var(--color-secondary);
 		border-color: var(--color-border-hover);
 		background-color: var(--color-surface-hover);
 		box-shadow: var(--shadow-sm);
@@ -131,6 +153,12 @@ import { site, projects } from "../../config";
 		gap: var(--space-md);
 	}
 
+	@media (min-width: 700px) {
+		.projects-grid {
+			grid-template-columns: 1fr 1fr;
+		}
+	}
+
 	#contact,
 	#projects {
 		scroll-margin-top: 80px;
@@ -150,6 +178,11 @@ import { site, projects } from "../../config";
 		.hero {
 			padding-block: var(--space-xl) var(--space-lg);
 			gap: var(--space-md);
+		}
+
+		.profile-pic {
+			min-width: 120px;
+			min-height: 120px;
 		}
 
 		.label {
