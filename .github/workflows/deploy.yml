@@ -3,16 +3,16 @@ name: Deploy Astro site
 on:
   push:
     branches:
-      - main  # or your default branch
+      - main
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v2
+      - uses: pnpm/action-setup@v3
         with:
-          version: 8
+          version: 8 # or your pnpm version
       - uses: actions/setup-node@v4
         with:
           node-version: 20
@@ -20,4 +20,5 @@ jobs:
       - run: pnpm run build
       - uses: withastro/action@v2
         with:
-          deploy_branch: gh-pages
+          node-version: 20
+          package-manager: pnpm
