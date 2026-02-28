@@ -1,4 +1,4 @@
-name: Deploy Astro site
+name: Deploy Astro site to GitHub Pages
 
 on:
   push:
@@ -12,13 +12,15 @@ jobs:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v3
         with:
-          version: 8 # or your pnpm version
+          version: 8
       - uses: actions/setup-node@v4
         with:
           node-version: 20
       - run: pnpm install
       - run: pnpm run build
-      - uses: withastro/action@v2
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
         with:
-          node-version: 20
-          package-manager: pnpm
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          publish_branch: gh-pages
