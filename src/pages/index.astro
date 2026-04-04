@@ -10,195 +10,303 @@ import { site, projects } from "../../config";
 ---
 
 <Layout>
+	<!-- Hero Section -->
 	<section class="hero">
-		<Image
-			src={ProfileImage}
-			alt="Profile picture"
-			width={240}
-			height={240}
-			class="profile-pic"
-		/>
-
-		<div class="hero-text">
-			<h1>{site.name}</h1>
-			<span class="label">{site.label}</span>
-			<p class="bio">{site.desc}</p>
-		</div>
-
-		<div class="social" id="contact">
-			<Button
-				href="https://github.com/raduandreigorcea"
-				icon="github"
-				target="_blank"
-				className="social-link"
-				aria-label="GitHub profile">/raduandreigorcea</Button
-			>
-			<Button
-				href="https://www.linkedin.com/in/radu-andrei-gorcea/"
-				icon="linkedin"
-				target="_blank"
-				className="social-link"
-				aria-label="LinkedIn profile">/raduandreigorcea</Button
-			>
-			<Button
-				href="mailto:radu.andrei787@gmail.com"
-				icon="mail"
-				className="social-link"
-				aria-label="Send email">radu.andrei787@gmail.com</Button
-			>
-			<Button
-				href="tel:+40757967797"
-				icon="phone"
-				className="social-link"
-				aria-label="Call phone number">+40 757 967 797</Button
-			>
+		<div class="hero-inner">
+			<div class="hero-text">
+				<h1>
+					I'm a developer who <span class="italic">crafts</span> digital experiences.
+				</h1>
+				<p class="hero-sub">
+					{site.desc}
+				</p>
+			</div>
+			<div class="hero-image-col">
+				<div class="hero-image-wrap">
+					<Image
+						src={ProfileImage}
+						alt="Profile picture"
+						width={480}
+						height={600}
+						class="profile-pic"
+					/>
+				</div>
+			</div>
 		</div>
 	</section>
 
+	<!-- Projects Section -->
 	<section class="projects" id="projects">
-		<div class="projects-grid">
-			{projects.map((project) => <ProjectCard {...project} />)}
+		<div class="projects-inner">
+			<div class="section-label">
+				<span class="label-tag">Portfolio</span>
+				<h2>Selected Work</h2>
+			</div>
+			<div class="projects-grid">
+				{projects.map((project, i) => (
+					<div class:list={["project-item", { "project-offset": i % 2 !== 0 }]}>
+						<ProjectCard {...project} />
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- Contact Section -->
+	<section class="contact" id="contact">
+		<div class="contact-inner">
+			<div class="contact-text">
+				<span class="label-tag">Get in Touch</span>
+				<h2>Let's build something together.</h2>
+				<p class="contact-desc">I'm always open to discussing new projects, creative ideas, or opportunities to be part of something great.</p>
+			</div>
+			<div class="social-links">
+				<Button
+					href="https://github.com/raduandreigorcea"
+					icon="github"
+					target="_blank"
+					className="social-link"
+					aria-label="GitHub profile">/raduandreigorcea</Button
+				>
+				<Button
+					href="https://www.linkedin.com/in/radu-andrei-gorcea/"
+					icon="linkedin"
+					target="_blank"
+					className="social-link"
+					aria-label="LinkedIn profile">/raduandreigorcea</Button
+				>
+				<Button
+					href="mailto:radu.andrei787@gmail.com"
+					icon="mail"
+					className="social-link"
+					aria-label="Send email">radu.andrei787@gmail.com</Button
+				>
+				<Button
+					href="tel:+40757967797"
+					icon="phone"
+					className="social-link"
+					aria-label="Call phone number">+40 757 967 797</Button
+				>
+			</div>
 		</div>
 	</section>
 </Layout>
 
 <style>
+	/* ── Hero ── */
 	.hero {
+		min-height: 100vh;
 		display: flex;
-		flex-direction: column;
 		align-items: center;
-		text-align: center;
-		gap: var(--space-lg);
+		padding-top: 6rem;
+		padding-inline: var(--space-xl);
+		background-color: var(--color-background);
 	}
 
-	.profile-pic {
-		border-radius: 50%;
-		height: clamp(100px, 40vw, 240px);
-		width: clamp(100px, 40vw, 240px);
-		object-fit: contain;
-		border: 3px solid var(--color-border-hover);
-		background-color: var(--color-primary);
-		box-shadow: var(--shadow-lg), var(--shadow-glow);
+	.hero-inner {
+		max-width: var(--max-width);
+		margin-inline: auto;
+		width: 100%;
+		display: grid;
+		grid-template-columns: 7fr 5fr;
+		gap: var(--space-3xl);
+		align-items: center;
 	}
 
 	.hero-text {
 		display: flex;
 		flex-direction: column;
-		align-items: center;
-		gap: var(--space-sm);
+		gap: var(--space-xl);
 	}
 
 	h1 {
 		color: var(--color-primary);
-		font-size: clamp(var(--font-size-2xl), 5vw, var(--font-size-3xl));
-		font-weight: var(--font-weight-bold);
+		font-size: clamp(var(--font-size-3xl), 5.5vw, var(--font-size-5xl));
+		font-weight: var(--font-weight-medium);
 		letter-spacing: var(--letter-spacing-tight);
 		line-height: var(--line-height-tight);
 		margin: 0;
-		word-break: break-word;
 	}
 
-	.label {
-		color: var(--color-secondary);
-		font-size: var(--font-size-lg);
-		font-weight: var(--font-weight-medium);
+	h1 .italic {
+		font-style: italic;
+		font-weight: var(--font-weight-light);
+		opacity: 0.55;
 	}
 
-	.bio {
-		max-width: min(520px, 100%);
+	.hero-sub {
+		font-size: clamp(var(--font-size-lg), 2vw, var(--font-size-xl));
 		color: var(--color-text);
+		font-weight: var(--font-weight-light);
+		line-height: var(--line-height-relaxed);
+		max-width: 36rem;
+		margin: 0;
+	}
+
+	.hero-image-col {
+		position: relative;
+		width: min(100%, clamp(240px, 30vw, 360px));
+		justify-self: end;
+	}
+
+	.hero-image-wrap {
+		border-radius: var(--border-radius-xl);
+		overflow: hidden;
+		background-color: var(--color-surface-alt);
+		padding: var(--space-sm);
+		box-shadow: var(--shadow-sm);
+	}
+
+	.profile-pic {
+		display: block;
+		width: 100%;
+		height: auto;
+		border-radius: calc(var(--border-radius-xl) - var(--space-sm));
+	}
+
+	/* ── Projects ── */
+	.projects {
+		padding: var(--space-3xl) var(--space-xl);
+		background-color: var(--color-surface);
+		scroll-margin-top: 80px;
+	}
+
+	.projects-inner {
+		max-width: var(--max-width);
+		margin-inline: auto;
+	}
+
+	.section-label {
+		margin-bottom: var(--space-3xl);
+	}
+
+	.label-tag {
+		display: block;
+		color: var(--color-secondary);
+		font-weight: var(--font-weight-medium);
+		font-size: var(--font-size-xs);
+		letter-spacing: var(--letter-spacing-wide);
+		text-transform: uppercase;
+		margin-bottom: var(--space-sm);
+	}
+
+	h2 {
+		color: var(--color-primary);
+		font-size: clamp(var(--font-size-2xl), 4vw, var(--font-size-3xl));
+		font-weight: var(--font-weight-light);
+		letter-spacing: var(--letter-spacing-tight);
+		margin: 0;
+	}
+
+	.projects-grid {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: var(--space-3xl);
+	}
+
+	.project-offset {
+		margin-top: var(--space-3xl);
+	}
+
+	/* ── Contact ── */
+	.contact {
+		padding: var(--space-3xl) var(--space-xl);
+		background-color: var(--color-background);
+		scroll-margin-top: 80px;
+	}
+
+	.contact-inner {
+		max-width: var(--max-width);
+		margin-inline: auto;
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: var(--space-3xl);
+		align-items: start;
+	}
+
+	.contact-text {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-sm);
+	}
+
+	.contact-desc {
+		color: var(--color-text);
+		font-weight: var(--font-weight-light);
 		line-height: var(--line-height-relaxed);
 		margin: var(--space-sm) 0 0;
-		padding-inline: var(--space-sm);
+		max-width: 28rem;
 	}
 
-	.social {
+	.social-links {
 		display: flex;
+		flex-direction: column;
 		gap: var(--space-md);
-		flex-wrap: wrap;
-		justify-content: center;
 	}
 
 	.social-link {
-		padding: var(--space-sm);
+		padding: var(--space-md) var(--space-lg);
 		border: 1px solid var(--color-border);
-		border-radius: var(--border-radius);
-		color: #var(--color-text);
+		border-radius: var(--border-radius-lg);
+		color: var(--color-text);
 		background: var(--color-background);
-		transition: var(--transition);
+		transition: var(--transition-slow);
+		font-weight: var(--font-weight-light);
 	}
 
 	.social-link:hover {
 		color: var(--color-secondary);
 		border-color: var(--color-border-hover);
 		background-color: var(--color-surface-hover);
-		box-shadow: var(--shadow-sm);
+		box-shadow: var(--shadow-md);
+		transform: translateY(-2px);
 	}
 
-	.projects {
-		padding-block: var(--space-2xl);
-	}
+	/* ── Responsive ── */
+	@media (max-width: 900px) {
+		.hero-inner {
+			grid-template-columns: 1fr;
+			gap: var(--space-xl);
+		}
 
-	h2 {
-		color: var(--color-primary);
-		font-size: clamp(var(--font-size-xl), 4vw, var(--font-size-2xl));
-		font-weight: var(--font-weight-semibold);
-		letter-spacing: var(--letter-spacing-tight);
-		margin: 0 0 var(--space-xs);
-	}
+		.hero-image-col {
+			width: min(100%, 300px);
+			margin-inline: auto;
+			justify-self: center;
+		}
 
-	.projects-grid {
-		display: grid;
-		grid-template-columns: 1fr;
-		gap: var(--space-md);
-	}
+		.hero-quote {
+			display: none;
+		}
 
-	@media (min-width: 700px) {
 		.projects-grid {
-			grid-template-columns: 1fr 1fr;
-		}
-	}
-
-	#contact,
-	#projects {
-		scroll-margin-top: 80px;
-	}
-
-	@media (max-width: 768px) {
-		.hero {
-			padding-block: var(--space-2xl) var(--space-xl);
+			grid-template-columns: 1fr;
+			gap: var(--space-xl);
 		}
 
-		.projects {
-			padding-block: var(--space-xl);
+		.project-offset {
+			margin-top: 0;
+		}
+
+		.contact-inner {
+			grid-template-columns: 1fr;
+			gap: var(--space-xl);
 		}
 	}
 
 	@media (max-width: 480px) {
 		.hero {
-			padding-block: var(--space-xl) var(--space-lg);
-			gap: var(--space-md);
+			padding-inline: var(--space-md);
+			padding-top: 5rem;
 		}
 
-		.profile-pic {
-			min-width: 120px;
-			min-height: 120px;
+		.projects,
+		.contact {
+			padding: var(--space-2xl) var(--space-md);
 		}
 
-		.label {
+		.hero-sub {
 			font-size: var(--font-size-base);
-		}
-
-		.bio {
-			font-size: var(--font-size-sm);
-		}
-
-		.section-header {
-			margin-bottom: var(--space-lg);
-		}
-
-		.social {
-			gap: var(--space-xs);
 		}
 	}
 </style>

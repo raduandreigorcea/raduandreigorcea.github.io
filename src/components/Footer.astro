@@ -10,37 +10,67 @@ const currentYear = new Date().getFullYear();
 
 <footer class={className}>
 	<div class="footer-inner">
-		<div class="divider"></div>
-		<p>&copy; {currentYear} {siteName}</p>
+		<p class="credit">&copy; {currentYear} {siteName}</p>
+		<div class="footer-links">
+			<a href="https://github.com/raduandreigorcea" target="_blank" rel="noopener noreferrer">GitHub</a>
+			<a href="https://www.linkedin.com/in/radu-andrei-gorcea/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+			<a href="mailto:radu.andrei787@gmail.com">Email</a>
+		</div>
 	</div>
 </footer>
 
 <style>
 	footer {
-		padding: var(--space-xl) var(--space-md);
+		padding: var(--space-xl) var(--space-xl);
+		background-color: var(--color-surface-alt);
 	}
 
 	.footer-inner {
 		max-width: var(--max-width);
 		margin-inline: auto;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		flex-wrap: wrap;
+		gap: var(--space-md);
 	}
 
-	.divider {
-		height: 1px;
-		background: linear-gradient(
-			to right,
-			transparent,
-			var(--color-border-hover),
-			transparent
-		);
-		margin-bottom: var(--space-xl);
-	}
-
-	p {
+	.credit {
 		margin: 0;
-		color: var(--color-text);
+		color: var(--color-text-muted);
 		font-size: var(--font-size-sm);
-		text-align: center;
-		letter-spacing: var(--letter-spacing-wide);
+		font-weight: var(--font-weight-light);
+	}
+
+	.footer-links {
+		display: flex;
+		gap: var(--space-xl);
+	}
+
+	.footer-links a {
+		color: var(--color-text-muted);
+		text-decoration: none;
+		font-size: var(--font-size-sm);
+		font-weight: var(--font-weight-light);
+		transition: color var(--transition);
+	}
+
+	.footer-links a:hover {
+		color: var(--color-primary);
+	}
+
+	@media (max-width: 480px) {
+		footer {
+			padding: var(--space-lg) var(--space-md);
+		}
+
+		.footer-inner {
+			flex-direction: column;
+			text-align: center;
+		}
+
+		.footer-links {
+			gap: var(--space-lg);
+		}
 	}
 </style>

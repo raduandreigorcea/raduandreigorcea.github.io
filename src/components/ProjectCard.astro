@@ -15,7 +15,7 @@ const { title, description, tags = [], href, repo } = Astro.props;
 
 <article class="card">
     <div class="card-content">
-        <h2 class="card-title">{title}</h2>
+        <h3 class="card-title">{title}</h3>
         <p class="card-description">{description}</p>
 
         {
@@ -61,31 +61,18 @@ const { title, description, tags = [], href, repo } = Astro.props;
 
 <style>
     .card {
-        border: 1px solid var(--color-border);
-        border-radius: var(--border-radius-lg);
-        padding: clamp(var(--space-lg), 4vw, var(--space-xl));
+        border-radius: var(--border-radius-xl);
+        padding: clamp(var(--space-xl), 4vw, var(--space-2xl));
         transition: var(--transition-slow);
         position: relative;
-    }
-
-    .card::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        border-radius: inherit;
-        transition: opacity var(--transition-slow);
-        background: linear-gradient(
-            135deg,
-            rgba(85, 181, 207, 0.04),
-            transparent 60%
-        );
-        pointer-events: none;
+        background-color: var(--color-background);
+        border: 1px solid var(--color-border);
     }
 
     .card:hover {
         border-color: var(--color-border-hover);
-        box-shadow: var(--shadow-md);
-        transform: translateY(-3px);
+        box-shadow: var(--shadow-lg);
+        transform: translateY(-4px);
     }
 
     .card-content {
@@ -97,8 +84,8 @@ const { title, description, tags = [], href, repo } = Astro.props;
 
     .card-title {
         color: var(--color-primary);
-        font-size: var(--font-size-xl);
-        font-weight: var(--font-weight-semibold);
+        font-size: var(--font-size-2xl);
+        font-weight: var(--font-weight-medium);
         letter-spacing: var(--letter-spacing-tight);
         margin: 0;
     }
@@ -106,6 +93,7 @@ const { title, description, tags = [], href, repo } = Astro.props;
     .card-description {
         color: var(--color-text);
         font-size: var(--font-size-sm);
+        font-weight: var(--font-weight-light);
         margin: 0;
         line-height: var(--line-height-relaxed);
     }
@@ -122,10 +110,10 @@ const { title, description, tags = [], href, repo } = Astro.props;
     .tag {
         font-size: var(--font-size-xs);
         font-weight: var(--font-weight-medium);
-        color: var(--color-secondary);
-        background-color: var(--color-secondary-soft);
-        padding: var(--space-2px) var(--space-sm);
-        border-radius: var(--border-radius-sm);
+        color: var(--color-tag-text);
+        background-color: var(--color-tag-bg);
+        padding: var(--space-xs) var(--space-sm);
+        border-radius: 9999px;
         letter-spacing: var(--letter-spacing-wide);
     }
 
@@ -133,7 +121,7 @@ const { title, description, tags = [], href, repo } = Astro.props;
         display: flex;
         flex-wrap: wrap;
         gap: var(--space-sm);
-        margin-top: var(--space-md);
+        margin-top: var(--space-lg);
     }
 
     .card-link {
@@ -146,20 +134,21 @@ const { title, description, tags = [], href, repo } = Astro.props;
         font-weight: var(--font-weight-medium);
         padding: var(--space-sm) var(--space-md);
         border: 1px solid var(--color-border);
-        border-radius: var(--border-radius);
-        transition: var(--transition);
+        border-radius: var(--border-radius-lg);
+        transition: var(--transition-slow);
         white-space: nowrap;
     }
 
     .card-link:hover {
-        color: var(--color-primary);
+        color: var(--color-secondary);
         border-color: var(--color-border-hover);
-        background-color: var(--color-secondary-soft);
+        background-color: var(--color-surface-hover);
+        transform: translateY(-1px);
     }
 
     @media (max-width: 480px) {
         .card-title {
-            font-size: var(--font-size-lg);
+            font-size: var(--font-size-xl);
         }
 
         .card-tags {

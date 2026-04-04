@@ -10,13 +10,13 @@ const { class: className } = Astro.props;
 
 <header class={className}>
 	<div class="container">
+		<a href="#" class="logo">Radu Gorcea</a>
 		<nav class="nav" id="main-nav" aria-label="Main navigation">
-			<a href="#" class="nav-link" aria-current="page">Home</a>
-			<a href="#contact" class="nav-link" aria-label="Contact section"
-				>Contact</a
-			>
 			<a href="#projects" class="nav-link" aria-label="Projects section"
 				>Projects</a
+			>
+			<a href="#contact" class="nav-link" aria-label="Contact section"
+				>Contact</a
 			>
 		</nav>
 
@@ -75,25 +75,37 @@ const { class: className } = Astro.props;
 
 <style>
 	header {
-		position: sticky;
+		position: fixed;
 		top: 0;
+		width: 100%;
 		z-index: 100;
-		background-color: var(--color-background);
+		background-color: rgba(251, 249, 244, 0.75);
+		backdrop-filter: blur(20px);
+		-webkit-backdrop-filter: blur(20px);
 		border-bottom: 1px solid var(--color-border);
 	}
 
 	.container {
 		max-width: var(--max-width);
 		margin-inline: auto;
-		padding: var(--space-md) var(--space-lg);
+		padding: var(--space-lg) var(--space-xl);
 		display: flex;
 		align-items: center;
-		justify-content: center;
+		justify-content: space-between;
+	}
+
+	.logo {
+		font-size: var(--font-size-lg);
+		font-weight: var(--font-weight-medium);
+		color: var(--color-primary);
+		text-decoration: none;
+		letter-spacing: var(--letter-spacing-tight);
 	}
 
 	.nav {
 		display: flex;
-		gap: var(--space-lg);
+		align-items: center;
+		gap: var(--space-xl);
 	}
 	.nav.open {
 		display: flex !important;
@@ -103,31 +115,15 @@ const { class: className } = Astro.props;
 		text-decoration: none;
 		color: var(--color-text);
 		font-size: var(--font-size-sm);
-		font-weight: var(--font-weight-medium);
-		letter-spacing: var(--letter-spacing-wide);
-		text-transform: uppercase;
+		font-weight: var(--font-weight-light);
+		letter-spacing: var(--letter-spacing-tight);
 		transition: color var(--transition);
 		position: relative;
 		padding-block: var(--space-xs);
 	}
 
-	.nav-link::after {
-		content: "";
-		position: absolute;
-		bottom: -2px;
-		left: 0;
-		width: 0;
-		height: 1.5px;
-		background-color: var(--color-secondary);
-		transition: width var(--transition-slow);
-	}
-
 	.nav-link:hover {
-		color: var(--color-primary);
-	}
-
-	.nav-link:hover::after {
-		width: 100%;
+		color: var(--color-secondary);
 	}
 
 	.menu-toggle {
@@ -181,7 +177,7 @@ const { class: className } = Astro.props;
 
 	@media (max-width: 640px) {
 		.container {
-			padding: var(--space-sm) var(--space-md);
+			padding: var(--space-md) var(--space-lg);
 		}
 
 		.nav {
@@ -193,8 +189,10 @@ const { class: className } = Astro.props;
 			top: 100%;
 			left: 0;
 			width: 100%;
-			background: var(--color-background);
-			box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+			background: rgba(251, 249, 244, 0.95);
+			backdrop-filter: blur(20px);
+			-webkit-backdrop-filter: blur(20px);
+			box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
 			z-index: 200;
 			padding: var(--space-md) 0;
 			animation: slideDown 0.3s cubic-bezier(0.4, 2, 0.6, 1) both;

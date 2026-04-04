@@ -1,14 +1,20 @@
 :root {
-	/* Colors */
-	--color-primary: #ffffffe1;
-	--color-secondary: #55b5cf;
-	--color-secondary-soft: rgba(85, 181, 207, 0.1);
-	--color-secondary-medium: rgba(85, 181, 207, 0.15);
-	--color-background: #0f1923;
-	--color-text: #b0b8c1;
-	--color-text-muted: #6b7a8d;
-	--color-border: rgba(255, 255, 255, 0.06);
-	--color-border-hover: rgba(255, 255, 255, 0.12);
+	/* Colors — warm, earthy palette */
+	--color-primary: #31332c;
+	--color-secondary: #815534;
+	--color-secondary-soft: rgba(129, 85, 52, 0.08);
+	--color-secondary-medium: rgba(129, 85, 52, 0.15);
+	--color-accent: #d97706;
+	--color-background: #fbf9f4;
+	--color-surface: #f5f4ed;
+	--color-surface-alt: #efeee6;
+	--color-surface-hover: rgba(129, 85, 52, 0.06);
+	--color-text: #5e6058;
+	--color-text-muted: #797c73;
+	--color-border: rgba(0, 0, 0, 0.06);
+	--color-border-hover: rgba(0, 0, 0, 0.12);
+	--color-tag-bg: #fddcb5;
+	--color-tag-text: #714828;
 
 	/* Spacing */
 	--space-2px: 2px;
@@ -21,7 +27,7 @@
 	--space-3xl: 6rem;
 
 	/* Typography */
-	--font-family: "Inter", system-ui, -apple-system, sans-serif;
+	--font-family: "Lexend", system-ui, -apple-system, sans-serif;
 	--font-size-xs: 0.75rem;
 	--font-size-sm: 0.875rem;
 	--font-size-base: 1rem;
@@ -30,15 +36,17 @@
 	--font-size-2xl: 1.75rem;
 	--font-size-3xl: 2.5rem;
 	--font-size-4xl: 3.25rem;
-	--line-height-tight: 1.2;
+	--font-size-5xl: 4rem;
+	--line-height-tight: 1.1;
 	--line-height-base: 1.6;
 	--line-height-relaxed: 1.8;
+	--font-weight-light: 300;
 	--font-weight-normal: 400;
 	--font-weight-medium: 500;
 	--font-weight-semibold: 600;
 	--font-weight-bold: 700;
 	--letter-spacing-tight: -0.02em;
-	--letter-spacing-wide: 0.05em;
+	--letter-spacing-wide: 0.08em;
 
 	/* Layout */
 	--max-width: 1250px;
@@ -48,14 +56,14 @@
 	--border-radius-xl: 1rem;
 
 	/* Shadows */
-	--shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.15);
-	--shadow-md: 0 4px 12px rgba(0, 0, 0, 0.2);
-	--shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.3);
-	--shadow-glow: 0 0 20px rgba(85, 181, 207, 0.15);
+	--shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06);
+	--shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+	--shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.1);
+	--shadow-glow: 0 0 30px rgba(129, 85, 52, 0.08);
 
 	/* Transitions */
 	--transition: 0.2s ease;
-	--transition-slow: 0.3s ease;
+	--transition-slow: 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 *,
