@@ -24,18 +24,19 @@ export const projects: Project[] = [
     title: "Idleview",
     description: "A beautiful, fullscreen dashboard application built with Tauri that displays the time, date, weather, and stunning contextual background images from Unsplash.",
     tags: ["Tauri", "Rust", "JavaScript", "Vue.js", "Embedded", "Unsplash API"],
-    repo: "https://github.com/raduandreigorcea/Idleview",
+    href: "https://raduandreigorcea.github.io/Idleview-Web/",
+    repo: "https://github.com/raduandreigorcea/Idleview"
   },
   {
     title: "FamCart",
     description: "A shared shopping list app that helps families plan groceries together. Users can create or join a household, add products, and keep their shopping list synchronized in real time.",
     tags: ["Vue.js", "TypeScript", "PostgreSQL"],
-    repo: "https://github.com/raduandreigorcea/FamCart",
+    repo: "https://github.com/raduandreigorcea/FamCart"
   },
   {
     title: "Pixlet",
     description: "A modern, lightweight pixel art editor built with Vue 3, TypeScript, and Tauri. Create pixel art with an intuitive interface, powerful drawing tools, and seamless performance.",
     tags: ["Vue.js", "TypeScript", "Tauri", "Rust"],
-    repo: "https://github.com/raduandreigorcea/Pixlet",
+    repo: "https://github.com/raduandreigorcea/Pixlet"
   }
 ];
