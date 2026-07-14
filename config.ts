@@ -13,10 +13,18 @@ export interface Project {
 }
 
 export const projects: Project[] = [
+  
+  {
+    title: "FamCart",
+    description: "A shared shopping list app that helps families plan groceries together. Users can create or join a household, add products, and keep their shopping list synchronized in real time.",
+    tags: ["Vue.js", "TypeScript", "PostgreSQL", "Clerk Auth", "Capacitor", "Vercel", "Supabase", "OneSignal"],
+    href: "https://famcart-app.vercel.app/",
+    repo: "https://github.com/raduandreigorcea/FamCart"
+  },
   {
     title: "Vantage",
     description: "A web app that uncovers hidden business gems from Reddit discussions featuring an interface for browsing AI-processed business ideas with user authentication and analytics dashboard.",
-    tags: ["Astro", "React", "TypeScript", "Prisma", "PostgreSQL", "Reddit API"],
+    tags: ["Astro", "React", "TypeScript", "Prisma", "PostgreSQL", "Reddit API", "Clerk Auth"],
     href: "https://raduandreigorcea.github.io/Vantage-Landing-Page/",
     repo: "https://github.com/RuseCristian/Vantange-AI-business-Leads",
   },
@@ -26,12 +34,6 @@ export const projects: Project[] = [
     tags: ["Tauri", "Rust", "JavaScript", "Vue.js", "Embedded", "Unsplash API"],
     href: "https://raduandreigorcea.github.io/Idleview-Web/",
     repo: "https://github.com/raduandreigorcea/Idleview"
-  },
-  {
-    title: "FamCart",
-    description: "A shared shopping list app that helps families plan groceries together. Users can create or join a household, add products, and keep their shopping list synchronized in real time.",
-    tags: ["Vue.js", "TypeScript", "PostgreSQL"],
-    repo: "https://github.com/raduandreigorcea/FamCart"
   },
   {
     title: "Pixlet",
